@@ -44,7 +44,7 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editStatusModal">
                   Edit Status
                 </button>
-                <a class="btn btn-danger mt-5" href="{{ route('cetak-laporan-pdf', $idx->id) }}" style="font-size: 14px"><i class="mr-2 fa-solid fa-file-pdf" ></i>PDF</a>
+                <a class="btn btn-danger mt-2" href="{{ route('cetak-laporan-pdf', $idx->id) }}" style="font-size: 14px"><i class="mr-2 fa-solid fa-file-pdf" ></i>PDF</a>
                 </td>
                 <!-- Button trigger modal -->
 
