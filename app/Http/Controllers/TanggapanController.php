@@ -73,7 +73,9 @@ class TanggapanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tanggapan = Tanggapan::find($id);
+        $pengaduan = Pengaduan::find($tanggapan->pengaduan_id);
+        return view('tanggapan.index', compact('tanggapan', 'pengaduan'));
     }
 
     /**
@@ -86,15 +88,10 @@ class TanggapanController extends Controller
     public function update(Request $request, $id)
     {
         $tanggapan = Tanggapan::find($id);
-        // Update status pengaduan
-        $pengaduan = $tanggapan->pengaduan;
-        if ($request->input('status') == 'diproses') {
-            $pengaduan->status = 'proses';
-        } elseif ($request->input('status') == 'ditolak') {
-            $pengaduan->status = 'selesai';
-        }
+        $pengaduan = Pengaduan::find($tanggapan->pengaduan_id);
+        
+        $pengaduan->status = $request->status;
         $pengaduan->save();
-
 
         return redirect('tanggapan')->with('success', 'Tanggapan berhasil diupdate');
     }

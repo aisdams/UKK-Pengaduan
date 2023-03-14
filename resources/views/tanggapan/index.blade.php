@@ -61,10 +61,10 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label for="status">Status Pengaduan</label>
-                          <select class="form-control" id="status" name="status">
-                            <option value="proses" {{ $idx->pengaduan->status == 'proses' ? 'selected' : '' }}>Proses</option>
+                          <select name="status" id="status" class="form-control">
+                            <option value="proses" {{ $idx->pengaduan->status == 'proses' ? 'selected' : '' }}>Diproses</option>
                             <option value="selesai" {{ $idx->pengaduan->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
-                          </select>
+                        </select>
                         </div>
                       </div>
                       <div class="modal-footer">
