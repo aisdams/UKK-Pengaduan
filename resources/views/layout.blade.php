@@ -56,7 +56,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ asset('template/ui-colors.html')}}">
+        <a class="nav-link" href="/laporan/all-data-laporan">
           <i class="fas fa-fw fa-palette"></i>
           <span>Laporan</span>
         </a>

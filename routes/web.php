@@ -29,6 +29,12 @@ Route::get('/dashboard', function () {
     return view('layout');
 })->middleware('auth');
 
+// Laporan Tanggapan
+Route::get('/laporan/all-data-laporan',[TanggapanController::class,'LaporanSemua'])->middleware('auth');
+
+// =================== Export PDF =================== //
+Route::get('/tanggapan-pdf/{id}', [TanggapanController::class, 'cetakLaporanPDF'])->name('cetak-laporan-pdf');
+
 Route::resource('masyarakat', PengaduanController::class);
 Route::resource('data-petugas', DataPetugasController::class)->middleware('auth');
 Route::resource('tanggapan', TanggapanController::class)->middleware('auth');

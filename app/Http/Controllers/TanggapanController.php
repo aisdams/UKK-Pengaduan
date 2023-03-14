@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\User;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
@@ -34,6 +35,24 @@ class TanggapanController extends Controller
         $user = User::all();
         $tanggapan = Tanggapan::with('pengaduan','user')->get();
         return view('tanggapan.add', compact('tanggapan','pengaduan','user'));
+    }
+
+    public function cetakLaporanPDF($id)
+    {
+        $pengaduan = Pengaduan::all();
+        $user = User::all();
+        $tanggapan = Tanggapan::with('pengaduan','user')->find($id);
+
+        $pdf = PDF::loadView('myinvoicepdf', compact('tanggapan','pengaduan','user'));
+        return $pdf->download('myinvoicepdf' . $tanggapan->id . '.pdf');
+    }
+
+     // Laporan 
+     public function LaporanSemua (){
+        $pengaduan = Pengaduan::all();
+        $user = User::all();
+        $tanggapan = Tanggapan::with('pengaduan','user')->get();
+        return view('laporan.index', compact('tanggapan','pengaduan','user'));
     }
 
     /**
